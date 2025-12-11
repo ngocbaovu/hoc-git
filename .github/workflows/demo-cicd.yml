@@ -1,0 +1,24 @@
+name: Kiem thu code tu dong
+# Sự kiện kích hoạt: Bất cứ khi nào Push vào nhánh main
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  # Tên công việc: Xin chào
+  say-hello-job:
+    # Môi trường chạy: Máy ảo Ubuntu mới nhất
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Bước 1: Lấy code từ kho về máy ảo
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    # Bước 2: Chạy lệnh in ra màn hình
+    - name: Chay lenh xin chao
+      run: echo "Chuc mung! Ban da cai dat CI/CD thanh cong!"
+      
+    # Bước 3: Kiểm tra thử file trong thư mục
+    - name: Kiem tra file
+      run: ls -la
