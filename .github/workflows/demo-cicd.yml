@@ -1,24 +1,19 @@
-name: Kiem thu code tu dong
-# Sự kiện kích hoạt: Bất cứ khi nào Push vào nhánh main
-on:
-  push:
-    branches: [ "main" ]
+name: Kiem tra Toan hoc
+on: [push]
 
 jobs:
-  # Tên công việc: Xin chào
-  say-hello-job:
-    # Môi trường chạy: Máy ảo Ubuntu mới nhất
+  math-test:
     runs-on: ubuntu-latest
-    
     steps:
-    # Bước 1: Lấy code từ kho về máy ảo
-    - name: Checkout code
-      uses: actions/checkout@v3
-      
-    # Bước 2: Chạy lệnh in ra màn hình
-    - name: Chay lenh xin chao
-      run: echo "Chuc mung! Ban da cai dat CI/CD thanh cong!"
-      
-    # Bước 3: Kiểm tra thử file trong thư mục
-    - name: Kiem tra file
-      run: ls -la
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Phep tinh dung (Se pass)
+        run: python -c "print(10 + 5)"
+
+      - name: Phep tinh sai (Se fail)
+        # Lệnh này sẽ báo lỗi vì chia cho 0
+        run: python -c "print(10 / 0)"
+        
+      - name: Buoc nay se khong chay
+        run: echo "Toi se khong bao gio duoc in ra vi buoc tren da chet!"
