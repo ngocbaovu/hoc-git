@@ -1,19 +1,20 @@
-name: Kiem tra Toan hoc
+name: Test Node.js App
 on: [push]
 
 jobs:
-  math-test:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Lay code ve
         uses: actions/checkout@v3
 
-      - name: Phep tinh dung (Se pass)
-        run: python -c "print(10 + 5)"
-
-      - name: Phep tinh sai (Se fail)
-        # Lệnh này sẽ báo lỗi vì chia cho 0
-        run: python -c "print(10 / 0)"
+      - name: Cai dat Node.js phien ban 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Kiem tra phien ban Node
+        run: node -v
         
-      - name: Buoc nay se khong chay
-        run: echo "Toi se khong bao gio duoc in ra vi buoc tren da chet!"
+      - name: Chay thu ung dung
+        run: node app.js

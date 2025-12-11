@@ -1,0 +1,1 @@
+console.log("Ung dung Node.js dang chay!");
